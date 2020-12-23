@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dataForm="clr-namespace:Syncfusion.XForms.DataForm;assembly=Syncfusion.SfDataForm.XForms"
+             xmlns:dataformxamarin="clr-namespace:DataFormXamarin"
+             x:Class="DataFormXamarin.DataFormPage">
+    
+    <ContentPage.BindingContext>
+        <dataformxamarin:DataFormViewModel x:Name="Client"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <dataForm:SfDataForm x:Name="dataForm" DataObject="{Binding ContactsInfo}" LayoutOptions="TextInputLayout"   AutoGenerateItems="False">
+            <dataForm:SfDataForm.Items>
+                <dataForm:DataFormDateItem Name="FirstName" Editor="Text" />
+                <dataForm:DataFormDateItem Name="LastName" Editor="Text"/>
+                <dataForm:DataFormDropDownItem Name="Country" BindingContext="{x:Reference Client}" Editor="DropDown" ItemsSource ="{Binding Addresses}" DisplayMemberPath="City" SelectedValuePath="PostalCode" />
+            </dataForm:SfDataForm.Items>
+        </dataForm:SfDataForm>
+    </ContentPage.Content>
+</ContentPage>
